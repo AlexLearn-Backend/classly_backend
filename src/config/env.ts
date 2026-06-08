@@ -5,5 +5,6 @@ config({
 })
 
 export const {
-  DATABASE_URL,
+  PORT, DATABASE_URL,
+  FRONTEND_URL,
 } = process.env;
