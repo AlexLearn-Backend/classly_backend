@@ -9,6 +9,9 @@ const app = express();
 
 
 app.use(express.json());
+
+if (!FRONTEND_URL) throw new Error('FRONTED_URL is not set');
+
 app.use(cors({
   origin: FRONTEND_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -23,6 +26,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(PORT || 8000, () => {
+  console.log(`Server is running at http://localhost:${PORT || 8000}`);
 });
