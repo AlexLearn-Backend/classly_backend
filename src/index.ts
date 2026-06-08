@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-if (!FRONTEND_URL) throw new Error('FRONTED_URL is not set');
+if (!FRONTEND_URL) throw new Error('FRONTEND_URL is not set');
 
 app.use(cors({
   origin: FRONTEND_URL,
