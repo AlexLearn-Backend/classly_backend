@@ -8,5 +8,6 @@ export const {
   PORT, DATABASE_URL,
   FRONTEND_URL,
   ARCJET_KEY, ARCJET_ENV,
+  BETTER_AUTH_SECRET,
   NODE_ENV,
 } = process.env;
