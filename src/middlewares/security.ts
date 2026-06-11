@@ -25,7 +25,7 @@ export default async function securityMiddleware (
     
       case "teacher":
       case 'student':
-        limit = 10,
+        limit = 10
         message = "User request limit exceeded (10 per minute)"
         break;
       
@@ -43,14 +43,23 @@ export default async function securityMiddleware (
       })
     )
 
+    const clientIp = req.socket.remoteAddress ?? req.ip;
+    
+    if (!clientIp) {
+      console.warn('Security middleware: Request without valid IP address');
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "Unable to identify client address."
+      });
+    }
+    
+
     const arcjetRequest: ArcjetNodeRequest = {
       headers: req.headers,
       method: req.method,
       url: req.originalUrl ?? req.url,
       socket: {
-        remoteAddress: req.socket.remoteAddress
-          ?? req.ip
-          ?? '0.0.0.0'
+        remoteAddress: clientIp
       }
     }
 
@@ -71,7 +80,7 @@ export default async function securityMiddleware (
     }
 
     if (decision.isDenied() && decision.reason.isRateLimit()) {
-      return res.status(403).json({
+      return res.status(429).json({
         error: "Too many request!",
         message
       })
