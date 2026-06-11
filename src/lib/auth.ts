@@ -5,7 +5,7 @@ import { BETTER_AUTH_SECRET, FRONTEND_URL } from "../config/env";
 import * as schema from "../db/schema/auth"
 
 
-if (!BETTER_AUTH_SECRET && !FRONTEND_URL) throw new Error("Please define required variables in .env file!")
+if (!BETTER_AUTH_SECRET || !FRONTEND_URL) throw new Error("Please define required variables in .env file!")
 
 export const auth = betterAuth({
   secret: BETTER_AUTH_SECRET!,
