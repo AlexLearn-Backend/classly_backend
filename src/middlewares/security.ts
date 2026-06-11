@@ -86,6 +86,13 @@ export default async function securityMiddleware (
       })
     }
 
+    if (decision.isDenied()) {
+      return res.status(403).json({
+        error: "Forbidden!",
+        message: "Request denied by security policy."
+      })
+    }
+
     next()
 
   }
