@@ -1,8 +1,8 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "../db";
-import { BETTER_AUTH_SECRET, FRONTEND_URL } from "../config/env";
-import * as schema from "../db/schema/auth"
+import { db } from "../db/index.js";
+import { BETTER_AUTH_SECRET, FRONTEND_URL } from "../config/env.js";
+import * as schema from "../db/schema/auth.js"
 
 
 if (!BETTER_AUTH_SECRET || !FRONTEND_URL) throw new Error("Please define required variables in .env file!")

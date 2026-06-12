@@ -1,5 +1,5 @@
 import arcjet, { shield, detectBot, slidingWindow} from "@arcjet/node";
-import { ARCJET_KEY, NODE_ENV, ARCJET_ENV } from "./env";
+import { ARCJET_KEY, NODE_ENV, ARCJET_ENV } from "./env.js";
 
 
 if (!ARCJET_KEY && NODE_ENV !== "test") {

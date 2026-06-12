@@ -1,5 +1,5 @@
 // User role for each request
-import { UserRoles } from "./type";
+import type { UserRoles } from "./type.js";
 
 declare global {
   namespace Express {

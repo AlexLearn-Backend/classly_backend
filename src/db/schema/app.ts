@@ -4,7 +4,7 @@ import {
   timestamp, varchar, text, jsonb, index, 
   unique, primaryKey
 } from "drizzle-orm/pg-core";
-import { user } from "./auth";
+import { user } from "./auth.js";
 
 
 const timestamps = {

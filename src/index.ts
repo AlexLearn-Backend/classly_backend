@@ -5,11 +5,11 @@ import express from 'express';
 import cors from 'cors'
 import { toNodeHandler } from "better-auth/node"
 
-import { auth } from './lib/auth';
-import { FRONTEND_URL, PORT } from './config/env';
-import securityMiddleware from './middlewares/security';
+import { auth } from './lib/auth.js';
+import { FRONTEND_URL, PORT } from './config/env.js';
+import securityMiddleware from './middlewares/security.js';
 
-import subjectsRouter from './routes/subjects';
+import subjectsRouter from './routes/subjects.js';
 
 
 const App = express();
