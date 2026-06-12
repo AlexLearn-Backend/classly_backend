@@ -20,15 +20,21 @@ usersRouter.get( '/' , async ( req , res ) => {
     const filterConditions = []
 
     if (search) {
+      const escapedSearch = String(search).replace(/[%_]/g, '\\$&');
       filterConditions.push(
         or(
-          ilike(user.name, `%${search}%`),
-          ilike(user.email, `%${search}%`),
+          ilike(user.name, `%${escapedSearch}%`),
+          ilike(user.email, `%${escapedSearch}%`),
         )
       )
     }
 
+    const validRoles: UserRoles[] = ['admin', 'teacher', 'student'];
+    
     if (role) {
+      if (!validRoles.includes(role as UserRoles)) {
+        return res.status(400).json({ error: 'Invalid role parameter' });
+      }
       filterConditions.push(eq(user.role, role as UserRoles));
     }
 

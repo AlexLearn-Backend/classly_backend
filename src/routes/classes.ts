@@ -27,7 +27,6 @@ classesRouter.post('/', async (req, res) => {
   catch (e) {
     console.error(`POST /classes error ${e}`);
     res.status(500).json({
-      error: e,
       message: "Error creating class"
     })
   }
