@@ -17,7 +17,7 @@ classesRouter.post('/', async (req, res) => {
       })
       .returning({ id: classes.id });
     
-    if (!createdClass) throw Error;
+    if (!createdClass) throw new Error('Failed to create class: no record returned');
 
     res.status(201).json({
       data: createdClass
