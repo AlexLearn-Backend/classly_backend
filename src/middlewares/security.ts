@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { NODE_ENV } from "../config/env.js";
 import aj from "../config/arcjet.js";
 import { ArcjetNodeRequest, slidingWindow } from "@arcjet/node";
-import { RateLimitRole } from "../type.js";
+import type { RateLimitRole } from "../type.js";
 
 
 export default async function securityMiddleware (
