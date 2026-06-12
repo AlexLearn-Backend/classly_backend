@@ -10,6 +10,8 @@ import { FRONTEND_URL, PORT } from './config/env.js';
 import securityMiddleware from './middlewares/security.js';
 
 import subjectsRouter from './routes/subjects.js';
+import usersRouter from './routes/users.js';
+import classesRouter from './routes/classes.js';
 
 
 const App = express();
@@ -30,7 +32,9 @@ App.all('/api/auth/*splat', toNodeHandler(auth));
 App.use(securityMiddleware)
 
 
-App.use('/api/subjects', subjectsRouter)
+App.use('/api/subjects', subjectsRouter);
+App.use('/api/users', usersRouter);
+App.use('/api/classes', classesRouter)
 
 
 App.get('/', (req, res) => {
